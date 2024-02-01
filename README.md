@@ -8,10 +8,15 @@ Used Flask Extensions such as Flask-WTF, Flask-SQLAlchemy, Flask-Login.
 # Features
 
 Encrypted database stored passwords
+
 Browse page to navigate other user's sets of flashcards
+
 Algorithmic Quiz System - Multiple Choice, Self Quiz
+
 Authentication System with Sessions
+
 Search For Specific Set Names
+
 Rate sets of flashcards
 
 # Instructions
