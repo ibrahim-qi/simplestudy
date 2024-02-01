@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block title %}
+Register
+{% endblock %}
+
+{% block content %}
+    <div class="auth-container">
+
+        <form class="form-login" method="POST" action="/register">
+            <h2 class="form-login-heading">Register</h2>
+            <!-- Creates WTForm -->
+            {{ form.hidden_tag() }}
+            {{ wtf.form_field(form.username) }}
+            {{ wtf.form_field(form.password) }}
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+            <a href='login'>Already a user?</a>
+        </form>
+    </div>
+{% endblock %}

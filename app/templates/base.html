@@ -1,0 +1,31 @@
+{% extends "bootstrap/base.html" %}
+
+<!-- Imports the style.css file  -->
+{% block head %}
+{{super()}} <!-- Makes it a parent template -->
+<link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+{% endblock %}
+
+<!-- Navigation Bar -->
+{% block navbar %}
+<!-- Only displays if current user is logged in  -->
+{% if current_user.is_authenticated %}
+<body class="base">
+<nav>
+    <label class="logo">SimpleStudy</label>
+    <ul>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/browse">Browse</a></li>
+        <li><a href="/create-set">Create Set</a></li>
+        <li><a href="/logout">Logout</a></li>
+    </ul>
+</nav>
+</body>
+{% endif %}
+
+{% endblock %}
+
+
+{% block scripts %}
+    {{ super() }}
+{% endblock %}

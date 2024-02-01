@@ -1,0 +1,38 @@
+<!-- Includes the base.html and imports bootstrap -->
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block title %}
+Login
+{% endblock %}
+
+<!-- Everything within block content is displayed -->
+{% block content %}
+    <div class="auth-container">
+        <form class="form-login" method="POST" action="/login">
+            <h2 class="h2">Login</h2>
+            <!-- Creates WTForm -->
+            {{ form.hidden_tag() }}
+            {{ wtf.form_field(form.username) }}
+            {{ wtf.form_field(form.password) }}
+            <button class="btn btn-lg btn-primary btn-block" a href='' type="submit">Submit</button>
+            <a href="register">Not yet registered?</a>
+            <br>
+            <br>
+            <!-- Displays Flashed Messages -->
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-warning">
+                        <span>{{ message }}</span>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </form>
+    </div>
+{% endblock %}

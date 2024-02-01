@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Self Quiz{% endblock %}
+
+{% block content %}
+    <div class="page-header">
+        <h1>Self Quiz of Set {{ set.setname }} </h1>
+    </div>
+        <div class="quiz-body">
+        <h2>Front:</h2>
+        <div class="flashcard-body">
+            <!-- Displays front for current flashcard  -->
+                <p>{{ flashcardFront }}</p>
+        </div>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <!-- If button is clicked, the back of current flashcard is revealed -->
+            <span class="btn btn-primary btn-answer" onclick="showBackSide()" id="show_back">
+                Show Back Side
+            </span>
+        </div>
+    </div>
+    <div class="self-quiz" id="back">
+        <h2>Back:</h2>
+        <div class="flashcard-body">
+            <p>{{ flashcardBack }}</p>
+        </div>
+    <div class="row choiceBtn">
+        <!-- Right and Wrong Buttons that run the right and wrong functions -->
+            <a href="{{ url_for('.right', setid=set.id, quizid=quiz.id, rightCount=quiz.rightCount) }}">
+            <button class="btn btn-success" name="rightPressed">Right</button>
+            </a>
+            <a href="{{ url_for('.wrong', setid=set.id, quizid=quiz.id, wrongCount=quiz.wrongCount) }}">
+            <button class="btn btn-danger" name="wrongPressed">Wrong</button>
+            </a>
+        </div>
+        </div>
+</div>
+<!-- Displays flashcards completed out of total flashcards in the set -->
+    <p class="flex-text" style="margin-left: 20px; margin-top: 10px">{{ flashcardsCompleted }}/{{ totalFlashcards }} flashcards completed</p>
+<div class="col-xs-6 col-md-4">
+    <!-- Counters -->
+<span class="label label-success">{{ rightCount }}</span>
+    <br>
+<span class="label label-danger">{{ wrongCount }}</span>
+</div>
+
+{% endblock %}
+
+<!-- quiz.js script -->
+{% block scripts %}
+    {{ super() }}
+    <script src="{{ url_for('static', filename='quiz.js') }}"></script>
+{% endblock %}

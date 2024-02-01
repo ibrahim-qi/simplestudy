@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Add a Flashcard Set{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h3>Create a New Flashcard Set</h3>
+</div>
+
+<div class="set-form">
+    <form method="POST">
+        <!-- WTForm Fields -->
+        {{ form.hidden_tag() }}
+        <div class="setname-label" style="color: black">
+        {{ form.setname.label }}
+        </div>
+        {{ form.setname() }}
+        <div class="topic-label" style="color: black">
+            <br>
+        {{ form.topic.label }}
+        </div>
+        {{ form.topic() }}
+        <div class="subject-label" style="color: black">
+            <br>
+            {{ form.subject.label }}
+        </div>
+        {{ form.subject() }}
+        <br>
+        <br>
+        <button type="submit" style="background-color:black; color:white" class="btn btn-default">Submit</button>
+</form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}{{ set.name }}{% endblock %}
+
+{% block content %}
+    <div class="page-header">
+        <!-- Displays set name as header -->
+        <h1> {{ set.setname }} </h1>
+            <span class="label label-primary">Topic: {{ set.topic }}</span>
+        <br>
+            <span class="label label-primary">Subject: {{ set.subject }}</span>
+        <br>
+        <!-- Choose Set Rating -->
+            <span class="label label-primary">Rating: </span>
+        <!-- If user has not yet rated this set -->
+            {% if hasRated == False %}
+            <form style="margin-top: 5px;" action="" method="POST">
+                <a href="{{ url_for('.rating', id=set.id) }}"><button name="rating" value=1.0>1</button></a>
+                <a href="{{ url_for('.rating', id=set.id) }}"><button name="rating" value=2.0>2</button></a>
+                <a href="{{ url_for('.rating', id=set.id) }}"><button name="rating" value=3.0>3</button></a>
+                <a href="{{ url_for('.rating', id=set.id) }}"><button name="rating" value=4.0>4</button></a>
+                <a href="{{ url_for('.rating', id=set.id) }}"><button name="rating" value=5.0>5</button></a>
+            </form>
+            {% else %}
+        <!-- Display Set Rating -->
+                <label style="margin-left: 5px;">{{ set.ratingNo }}</label>
+        {% endif %}
+        <div class="margTop">
+            <!-- Only can add flashcard or delete set if set belongs to user -->
+            {% if current_user.username == set.username %}
+                <a href="{{ url_for('.add_flashcards', id=set.id) }}">
+                <span class="label label-success">Add Flashcards</span>
+                </a>
+            <div class="delete">
+                <a href="{{ url_for('.delete_set', id=set.id) }}">
+                    <span class="label label-danger ">Delete Set</span>
+                </a>
+            </div>
+                </div>
+        {% endif %}
+        <br>
+        <!-- Button calling the start_selfquiz function/route (self quiz)-->
+        <a href="{{ url_for('.start_selfquiz', setid=set.id) }}">
+            <span class="btn btn-primary btn-learn">Start Self Quiz</span>
+        </a>
+        <!-- Button calling the start_mcq function/route (multiple choice quiz) -->
+        <a href="{{ url_for('.start_mcq', setid=set.id) }}">
+        <span class="btn btn-primary btn-learn">Start Multiple Choice Quiz</span>
+            </a>
+        </div>
+        <h2 style="padding-left: 15px">Flashcards in this set:</h2>
+    </div>
+<!-- Displays simple flashcard box which redirects to flashcard -->
+    {% include "_flashcard.html" %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-warning">
+    <span>{{ message }}</span>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+{% endblock %}

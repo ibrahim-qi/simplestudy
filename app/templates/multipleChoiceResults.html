@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Results{% endblock %}
+
+{% block content %}
+    <div class="page-header">
+        <h1>Test Results</h1>
+    </div>
+<div class="results-body">
+    <div class="results-score">
+        <!-- Displays Percentage Score, the right score and wrong score of Quiz -->
+        <h2>{{ percentageScore }}%</h2>
+        <p class="label label-success">{{ quiz.score }}</p>
+        <br>
+        <p class="label label-danger">{{ wrongCount }}</p>
+    </div>
+    <br>
+    <!-- Buttons redirecting to dashboard or set that was quizzed on  -->
+    <a href="/dashboard"><button type="button" class="btn btn-primary">Return to dashboard</button></a>
+    <a href="{{ url_for('.set', id=set.id) }}"><button type="button" class="btn btn-primary">Return to set</button>
+    </a>
+</div>
+{% endblock %}

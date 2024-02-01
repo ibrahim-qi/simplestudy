@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}Page Not Found{% endblock %}
+
+<!-- Error page that is displayed if there are any errors on start up of quiz -->
+{% block content %}
+<h1>Sorry, there are not enough flashcards in this set.</h1>
+<a href="/dashboard"><button type="button" class="btn btn-primary">Return to dashboard</button></a>
+<a href="{{ url_for('.set', id=set.id) }}"><button type="button" class="btn btn-primary">Return to set</button></a>
+{% endblock %}

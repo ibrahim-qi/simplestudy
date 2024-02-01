@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Page Not Found{% endblock %}
+
+<!-- Error Page -->
+{% block content %}
+    <div class="page-header">
+        <h1>404</h1>
+        <!-- Allows user to return back to dashboard -->
+        <h2>Return to <a href="{{ url_for('main.dashboard') }}">Dashboard</a></h2>
+    </div>
+
+{% endblock %}

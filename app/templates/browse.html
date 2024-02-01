@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Browse Sets{% endblock %}
+
+{% block content %}
+<!-- Search bar  -->
+<div class="search">
+    <form class="form-inline my-2 my-lg-0" method="GET">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search Sets" name="search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+</div>
+
+<!-- Heading -->
+<div class="page-header">
+   <h3>Browse Sets</h3>
+</div>
+
+ <div class="flex-row row">
+     <!-- Displays each set -->
+     {% for set in sets %}
+     <div class="col-xs-12 col-sm-4 col-lg-3">
+        <article class="thumbnail">
+            <header>
+                <!-- Set Information -->
+                <h3><a href="{{ url_for('.set', id=set.id) }}">{{ set.setname }}</a></h3>
+                    <span class="label label-primary">Topic: {{ set.topic }}</span>
+                <br>
+                    <span class="label label-primary">Subject: {{ set.subject }}</span>
+                <br>
+                    <span class="label label-primary">User: {{ set.username }}</span>
+                <br>
+                    <span class="label label-primary">Flashcards: {{ set.flashcards.count() }}</span>
+            </header>
+        </article>
+     </div>
+             {% endfor %}
+
+ </div>
+
+{% endblock %}

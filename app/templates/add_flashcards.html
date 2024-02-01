@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Add Flashcard{% endblock %}
+
+{% block content %}
+    <div class="page-header">
+        <h1>Add Flashcards to {{ setname }}</h1>
+    </div>
+    <div class="form-fields">
+        <!-- Creates WTForm -->
+        {{ wtf.quick_form(form) }}
+    </div>
+{% endblock %}
+
+<!-- Adds PageDown script which is used for the front and back fields in the form -->
+<!-- PageDown fields -->
+{% block scripts %}
+    {{ super() }}
+    {{ pagedown.include_pagedown() }}
+{% endblock %}

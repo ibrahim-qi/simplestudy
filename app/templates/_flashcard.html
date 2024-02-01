@@ -1,0 +1,22 @@
+<div class="flex-row row">
+    <!-- Jinja Template -->
+    <!-- Displays the HTML code for every flashcard in set -->
+    {% for flashcard in set.flashcards %}
+        <div class="col-xs-12 col-sm-4 col-lg-3">
+            <article class="thumbnail">
+                <header>
+                    <h3>
+                        <!-- Redirects to flashcard -->
+                        <a href="{{ url_for('.flashcard', setid=set.id, cardid=flashcard.id) }}">Flashcard {{ loop.index }}</a>
+                    </h3>
+                    <!-- Only allows the user that has created the set to delete the flashcard -->
+                    {% if current_user.username == set.username %}
+                    <a href="{{ url_for('.delete_card', setid=set.id, cardid=flashcard.id) }}">
+                    <span class="label label-danger">Delete</span>
+                    </a>
+                    {% endif %}
+                </header>
+            </article>
+</div>
+    {% endfor %}
+</div>

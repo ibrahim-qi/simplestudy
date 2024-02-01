@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <!-- Displays Welcome Message with username of user logged in -->
+   <h3>Welcome, {{ current_user.username }}</h3>
+</div>
+
+<!-- Display when user is logged in -->
+{% if current_user.is_authenticated %}
+<h2 style="padding-left: 15px">Your Flashcard Sets:</h2>
+ <div class="flex-row row">
+     <!-- Displays each set created by the user -->
+     {% for set in sets %}
+     <div class="col-xs-12 col-sm-4 col-lg-3">
+        <article class="thumbnail">
+            <header>
+                <!-- Redirects to set -->
+                <h3><a href="{{ url_for('.set', id=set.id) }}">{{ set.setname }}</a></h3>
+                <div class="topic">
+                    <span class="label label-primary">{{ set.topic }}</span>
+
+                </div>
+            </header>
+        </article>
+     </div>
+             {% endfor %}
+
+{% endif %}
+ </div>
+
+<!-- Displays flashed messages  -->
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-warning">
+    <span>{{ message }}</span>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+{% endblock %}
+

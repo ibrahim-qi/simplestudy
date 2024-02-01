@@ -1,0 +1,217 @@
+ /* styling for auth system */
+.auth-container{
+  height: 90px;
+  display: flex;
+  align-items: centre;
+  justify-content: center;
+  margin: auto;
+}
+
+ /* styling for dashboard */
+nav{
+    background: black;
+    height: 80px;
+    width: 100%;
+}
+label.logo{
+    color: white;
+    font-size: 28px;
+    line-height: 80px;
+    padding: 0 40px;
+    font-weight: bold;
+}
+nav ul{
+    float: right;
+    margin-right: 300px;
+
+}
+nav ul li{
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 5px;
+    padding: 0 15px
+}
+nav ul li a{
+    color: white;
+    font-size: 17px;
+
+}
+
+.set-form{
+    padding-left: 75px;
+    padding-top: 20px;
+}
+
+.page-header{
+    margin-left: 20px;
+}
+
+
+/* Displays Row of Flashcards */
+@media only screen and (min-width: 481px) {
+    .flex-row.row {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+
+    .flex-row.row > [class*='col-'] {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        flex-direction: column;
+    }
+
+    .flex-row.row:after,
+    .flex-row.row:before {
+        display: flex;
+    }
+}
+
+ /* Flashcard Box */
+.flex-row .thumbnail, .flex-row .caption {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    flex: 1 0 auto;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.thumbnail header {
+    margin-bottom: 15px;
+}
+
+.thumbnail .newSet {
+    font-size: 3em;
+    margin: 25%;
+    border: none;
+    background-color: #fff;
+    text-align: center;
+}
+
+.thumbnail {
+    padding: 15px;
+    box-shadow: 0 2px 2px #aaa;
+}
+
+ /* Styling for Search Bar */
+.search{
+    position: absolute;
+    right: 150px;
+    padding: 20px;
+}
+
+
+.flex-row .caption p.flex-text {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+}
+
+.margTop {
+    margin-top: 10px;
+}
+
+div.flask-pagedown-preview {
+    width: 90%;
+    margin: 10px 0px 10px 0px;
+    border: 1px solid #e0e0e0;
+    padding: 4px;
+}
+
+.form-fields{
+    width: 90%;
+    margin: 10px;
+}
+
+.flashcard-body {
+    border: 1px solid #e0e0e0;
+    width: 90%;
+    padding: 4px;
+}
+.btn-answer{
+    display: flex;
+    position: absolute;
+    margin: 10px;
+}
+
+ /* Styling For Self Quiz*/
+/* This hides the back side of the flashcard until the showBackSide() js function is called */
+.self-quiz{
+    display: none;
+}
+
+.btn-back, .choiceBtn, .btn-self-quiz{
+    margin-top: 20px;
+    margin-right: 800px;
+    margin-left: 20px;
+}
+
+.choiceBtn{
+    margin-bottom: 5px;
+}
+
+.margFlash{
+    margin: 20px;
+}
+
+.quiz-body{
+    border: 1px solid black;
+    width: 90%;
+    border-radius: 15px;
+    margin: 10px;
+}
+
+.results-body{
+    border: 1px solid black;
+    width: 40%;
+    padding: 10px;
+    margin-left: 20px
+
+}
+.results-score{
+    border: 1px solid black;
+    padding: 10px;
+    width: 70%;
+    margin-left: 60px;
+}
+
+ /* Styling for Multiple Choice Quiz*/
+.mcquiz-body{
+    border: 1px solid black;
+    border-radius: 15px;
+    margin: 10px;
+    width: 60%;
+    overflow: hidden;
+    text-align: center;
+}
+
+.mcquiz-body .quiz-header{
+    min-height: 30px;
+    padding: 12px;
+}
+
+.mcquiz-body p {
+    font-weight: bold;
+    text-align: center;
+}
+
+.mcquiz-body .choices {
+    display: block;
+}
+
+
+
+
+
+
+
+
